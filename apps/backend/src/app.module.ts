@@ -14,7 +14,7 @@ import { TasksModule } from './tasks/tasks.module';
       database: 'todoassign',
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
-      logging: true
+      logging: false
     }),
     TasksModule
   ],
