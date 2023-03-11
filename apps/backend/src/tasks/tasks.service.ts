@@ -15,7 +15,7 @@ export class TasksService {
     return this.TasksRepo.find({
       where: { isDelete: false },
       order: {
-        createdat: 'DESC'
+        createdat: 'ASC'
       }
     });
   }
