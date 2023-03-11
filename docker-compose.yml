@@ -1,0 +1,21 @@
+volumes:
+  postgres-db:
+    driver: local
+
+version: '3.5'
+
+services:
+  database:
+    image: 'postgres:latest'
+
+    ports:
+      - 5432:5432
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: tdeveloperP@ssw0rd
+      POSTGRES_DB: todoassign
+
+volumes:
+  postgres-db:
+    driver: local
