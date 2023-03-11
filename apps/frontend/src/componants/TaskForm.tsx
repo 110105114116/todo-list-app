@@ -19,7 +19,7 @@ const TaskForm = () => {
 
   return (<>
     <form onSubmit={handleSubmit}>
-      <TextField fullWidth label="New task" name="title" />
+      <TextField fullWidth label="New task" name="title" required />
       <Button variant="outlined" type="submit" style={{ margin: 10 }}>+ Add task</Button>
     </form><hr />
   </>)
