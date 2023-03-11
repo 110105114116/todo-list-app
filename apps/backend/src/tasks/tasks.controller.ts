@@ -6,7 +6,8 @@ import {
   Body,
   Param,
   Query,
-  Request
+  Request,
+  Delete
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 
@@ -50,12 +51,24 @@ export class TasksController {
     return this.tasksService.updateOne(params.id);
   }
 
-  //? PUT /tasks/delete/:id
-  @Put('delete/:id')
+  @Delete('clearall')
+  clearAll() {
+    return this.tasksService.clearAll();
+  }
+
+  @Delete('clearcompleted')
+  clearCompleted() {
+    return this.tasksService.clearCompleted();
+  }
+  
+  //? DELETE /tasks/:id
+  @Delete(':id')
   deleteOne(
     @Param() params
   ) {
     return this.tasksService.deleteOne(params.id);
   }
+
+  
 
 }

@@ -12,7 +12,12 @@ export class TasksService {
   ) {}
 
   TasksFindAll(): Promise<Tasks[]> {
-    return this.TasksRepo.find();
+    return this.TasksRepo.find({
+      where: { isDelete: false },
+      order: {
+        createdat: 'DESC'
+      }
+    });
   }
 
   TasksFindOne(id: number): Promise<Tasks> {
@@ -52,9 +57,20 @@ export class TasksService {
   deleteOne(id: number): Promise<any> {
     return this
       .TasksRepo
-      .update({ id }, {
-        isDelete: true
-      });
+      .delete({ id });
   }
 
+  clearCompleted(): Promise<any> {
+    return this.TasksRepo.softDelete({
+      status: 'completed'
+    });
+  }
+
+  clearAll(): Promise<any> {
+    return this.TasksRepo.softDelete({});
+  }
+
+  analytics(): Promise<any> {
+    return this.TasksRepo.createQueryBuilder('tasks').withDeleted().getMany();
+  }
 }

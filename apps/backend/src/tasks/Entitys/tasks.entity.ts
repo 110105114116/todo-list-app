@@ -3,7 +3,8 @@ import {
   Column, 
   PrimaryGeneratedColumn, 
   CreateDateColumn,
-  UpdateDateColumn
+  UpdateDateColumn,
+  DeleteDateColumn
 } from 'typeorm';
 
 enum TaskStatus {
@@ -43,4 +44,9 @@ export class Tasks {
     default: () => 'CURRENT_TIMESTAMP(6)',
   })
   updatedat: Date;
+
+  @DeleteDateColumn({
+    type: 'timestamp'
+  })
+  deletedat: Date;
 }
